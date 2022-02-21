@@ -5,7 +5,6 @@ function orderPizza($pizzaType, $who) {
 
 $toPrint = 'A '.$pizzaType;
 $p = calc_cts($pizzaType);
-$address = '';
 
 echo 'Creating new order... <br>';
 
@@ -19,7 +18,6 @@ if ($who == 'students'){
     $address = 'BeCode office';
 }
 
-$toPrint .= " pizza should be sent to " . $who . ". <br>The address: {$address}.";
 echo "A ". $pizzaType . " pizza should be sent to " . $who . ". <br>The address: {$address}. <br>";
 echo'The bill is €'.$p.'.<br>';
 echo "Order finished.<br><br>";
@@ -48,8 +46,7 @@ function calc_cts($pizzaType){
     }
     return $cost;
 }
-function ordr_piz_all()
-{
+function ordr_piz_all(){
 orderPizza('calzone', 'koen');
 orderPizza('marguerita', 'manuele');
 orderPizza('golden', 'students');
