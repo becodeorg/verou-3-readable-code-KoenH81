@@ -5,7 +5,7 @@ function orderPizza($pizzaType, $who) {
 
 $toPrint = 'A '.$pizzaType;
 $p = calc_cts($pizzaType);
-$address = 'unknown';
+$address = '';
 
 echo 'Creating new order... <br>';
 
@@ -19,60 +19,41 @@ if ($who == 'students'){
     $address = 'BeCode office';
 }
 
-    $toPrint .=   ' pizza should be sent to ' . $who . ". <br>The address: {$address}.";
-echo $toPrint; echo '<br>';
+$toPrint .= " pizza should be sent to " . $who . ". <br>The address: {$address}.";
+echo "A ". $pizzaType . " pizza should be sent to " . $who . ". <br>The address: {$address}. <br>";
 echo'The bill is €'.$p.'.<br>';
-
-
-
-
-    echo "Order finished.<br><br>";
+echo "Order finished.<br><br>";
 }
+function calc_cts($pizzaType){
+    $cost = 'unknown';
 
-    function total_price($p) {
-            return $p;
-    }
-
-        function test($p_type) {
-            echo "Test: type is {$p_type}. <br>";
-        }
-
-function calc_cts($p_type)
-{
-    $cst = 'unknown';
-
-    if ($p_type == 'marguerita') {
-        $cst = 5;
+    if ($pizzaType == 'marguerita') {
+        $cost = 5;
     }
     else
         {
-        if ($p_type == 'golden')
+        if ($pizzaType == 'golden')
         {
-            $cst = 100;
+            $cost = 100;
         }
 
-            if ($p_type == 'calzone')
+            if ($pizzaType == 'calzone')
             {
-                $cst = 10;
+                $cost = 10;
             }
 
-        if ($p_type == 'hawaii') {
+        if ($pizzaType == 'hawaii') {
             throw new Exception('Computer says no');
         }
     }
-
-    return $cst;
+    return $cost;
 }
-
-            function ordr_piz_all()
-            {
-            $test= 0;
-            orderPizza('calzone', 'koen');
-            orderPizza('marguerita', 'manuele');
-
-            orderPizza('golden', 'students');
-            }
-
+function ordr_piz_all()
+{
+orderPizza('calzone', 'koen');
+orderPizza('marguerita', 'manuele');
+orderPizza('golden', 'students');
+}
 function make_Allhappy($do_it) {
 if ($do_it) {
         ordr_piz_all();
@@ -80,5 +61,4 @@ if ($do_it) {
         // Should not do anything when false
     }
 }
-
 make_Allhappy(true);
